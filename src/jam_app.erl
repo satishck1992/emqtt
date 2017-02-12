@@ -15,8 +15,10 @@
 %%====================================================================
 
 start(_StartType, _StartArgs) ->
-	% emqtt_logger:start(),
-	% socket_server:start(),
+	application:start(emqtt_logger),
+	emqtt_logger:info("logger started"),
+
+	socket_server:start(),
     emqtt_sup:start_link().
 
 %%--------------------------------------------------------------------
